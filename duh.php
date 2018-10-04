@@ -23,21 +23,30 @@ $chord_names = [
 ];
 
 function pickAKey($song_data) {
-	$song_key = array_rand($song_data['keys']);
+	$song_key_index = array_rand($song_data['keys']);
+	$song_key = $song_data['keys'][$song_key_index];
 
 	return $song_key;
 } 
 
 function pickATempo($song_data) {
-	$song_tempo = array_rand($song_data['tempos']);
-	
+	$song_tempo_index = array_rand($song_data['tempos']);
+	$song_tempo = $song_data['tempos'][$song_tempo_index];
+
 	return $song_tempo;	
 }
 
-$key = pickAKey($song_data);
+function pickASignature($song_data) {
+	$time_signature_index = array_rand($song_data['time']);
+	$time_signature = $song_data['time'][$time_signature_index];
 
-echo "Song Key: {$song_data['keys']['1']} \n";
-echo "Chord Numbers: " . implode(", ", $chord_names['numbers']) . "\n";
-echo "Chords: " . implode(", ", $chord_names['G']) . "\n";
+	return $time_signature;
+}	
+
+$key = pickAKey($song_data);
+$tempo = pickATempo($song_data);
+$time = pickASignature($song_data);
 
 echo "Song Key: " . $key . "\n";
+echo "Song Tempo: " . $tempo . "\n";
+echo "Time Signature: " . $time . "\n";
