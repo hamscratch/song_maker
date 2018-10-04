@@ -22,31 +22,18 @@ $chord_names = [
 	'F' => ['F', 'Gm', 'Am', 'Bb', 'C', 'Dm'],
 ];
 
-function pickAKey($song_data) {
-	$song_key_index = array_rand($song_data['keys']);
-	$song_key = $song_data['keys'][$song_key_index];
+function pickStuff($song_data, $type) {
+	$index = array_rand($song_data[$type]);
+	$result = $song_data[$type][$index];
 
-	return $song_key;
-} 
-
-function pickATempo($song_data) {
-	$song_tempo_index = array_rand($song_data['tempos']);
-	$song_tempo = $song_data['tempos'][$song_tempo_index];
-
-	return $song_tempo;	
+	return $result;
 }
 
-function pickASignature($song_data) {
-	$time_signature_index = array_rand($song_data['time']);
-	$time_signature = $song_data['time'][$time_signature_index];
-
-	return $time_signature;
-}	
-
-$key = pickAKey($song_data);
-$tempo = pickATempo($song_data);
-$time = pickASignature($song_data);
+$key = pickStuff($song_data, 'keys');
+$tempo = pickStuff($song_data, 'tempos');
+$time = pickStuff($song_data, 'time');
 
 echo "Song Key: " . $key . "\n";
 echo "Song Tempo: " . $tempo . "\n";
 echo "Time Signature: " . $time . "\n";
+
