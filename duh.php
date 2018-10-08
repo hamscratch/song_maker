@@ -42,14 +42,14 @@ function chordPicker($chord_names, $song_data) {
 	$song_chord_index = $chord_names[$song_key];
 	$song_chord_index = array_rand($song_chord_index, $structure);
 
+	$chord_nonsense = [];
+
 	foreach ($song_chord_index as $chord_id) {
-		$name = $chord_names[$song_key][$chord_id];
-		return $name;
+		$chord_nonsense[] = $chord_names[$song_key][$chord_id];
+		return $chord_nonsense;
 	}
 	
-	$chords = $name;
-	
-	return $chords;
+	return $chord_nonsense;
 }
 
 $key = pickStuff($song_data, 'keys');
