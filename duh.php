@@ -1,26 +1,10 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @hamscratch Sign out
-0
-1 0 hamscratch/song_maker
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-song_maker/duh.php
-2bba3ba  3 hours ago
-@hamscratch hamscratch Update duh.php
-     
-69 lines (51 sloc)  1.83 KB
 <?php
 $song_data = [
 	'keys' => ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb', 'F'],
 	'tempos' => ['85', '90', '95', '100', '105', '110', '115', '120', '125', '130'],
 	'time' => ['4/4', '3/4', '6/8'],
 ];
+
 $chord_names = [
 	'numbers' => ['I', 'ii', 'iii', 'IV', 'V', 'vi'],
 	'C' => ['C', 'Dm', 'Em', 'F', 'G', 'Am'],
@@ -36,18 +20,32 @@ $chord_names = [
 	'Bb' => ['Bb', 'Cm', 'Dm', 'Eb', 'F', 'Gm'],
 	'F' => ['F', 'Gm', 'Am', 'Bb', 'C', 'Dm'],
 ];
+
+$progressions = [
+	'0' => [0, 4, 5, 3],
+	'1' => [0, 5, 3, 4],
+	'2' => [1, 3, 4],
+	'3' => [0, 3, 4, 3],
+	'4' => [4, 3, 0],
+	'5' => [5, 3, 0, 4],
+	'6' => [0, 5, 1, 4],
+	'7' => [0, 4, 5, 2, 3],
+];
+
 function pickStuff($song_data, $type) {
 	$index = array_rand($song_data[$type]);
 	$result = $song_data[$type][$index];
 	
 	return $result;
 }
+
 function numberPicker() {
 	$size_options = [2, 4];
 	$structure_size = array_rand(array_flip($size_options));
 	
 	return $structure_size;
 }
+
 function chordPicker($chord_names, $song_data) {
 	$song_key = pickStuff($song_data, 'keys');
 	$structure = numberPicker();
@@ -61,24 +59,30 @@ function chordPicker($chord_names, $song_data) {
 	
 	return $chord_nonsense;
 }
+
+function chordProgressionPicker($chord_names, $progressions, $key) {
+	$chord_nonsense = [];
+	
+	$progression_index = array_rand($progressions);
+	$chord_progression = $progressions[$progression_index];
+
+	foreach ($chord_progression as $chord) {
+		$chord_nonsense[] = $chord_names[$key][$chord];
+	}
+	
+	return $chord_nonsense;
+}
+
 $key = pickStuff($song_data, 'keys');
 $tempo = pickStuff($song_data, 'tempos');
 $time = pickStuff($song_data, 'time');
-$chords = chordPicker($chord_names, $song_data);
+$chords = chordProgressionPicker($chord_names, $progressions, $key);
+
 echo "Song Key: " . $key . "\n";
 echo "Song Tempo: " . $tempo . "\n";
 echo "Time Signature: " . $time . "\n";
 echo "Chords: " . implode(", ", $chords) . "\n";
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Press h to open a hovercard with more details.
+
+
+
+
