@@ -5,8 +5,8 @@ $song_data = [
 	'time' => ['4/4', '3/4', '6/8'],
 ];
 
-$chord_names = [
-	'numbers' => ['I', 'ii', 'iii', 'IV', 'V', 'vi'],
+$major_chord_names = [
+	'numbers' => ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii (dim)'],
 	'C' => ['C', 'Dm', 'Em', 'F', 'G', 'Am'],
 	'G' => ['G', 'Am', 'Bm', 'C', 'D', 'Em'],
 	'D' => ['D', 'Em', 'F#m', 'G', 'A', 'Bm'],
@@ -19,6 +19,22 @@ $chord_names = [
 	'Eb' => ['Eb', 'Fm', 'Gm', 'Ab', 'Bb', 'Cm'],
 	'Bb' => ['Bb', 'Cm', 'Dm', 'Eb', 'F', 'Gm'],
 	'F' => ['F', 'Gm', 'Am', 'Bb', 'C', 'Dm'],
+];
+
+$minor_chord_names = [
+	'numbers' => ['i', 'ii (dim)', 'III', 'iv', 'v', 'VI', 'VII'],
+	'Am' => ['Am', 'B dim', 'C', 'Dm', 'Em', 'F', 'G'],
+	'Em' => ['Em', 'F# dim', 'G', 'Am', 'Bm', 'C', 'D'],
+	'Bm' => ['Bm', 'C# dim', 'D', 'E', 'F#m', 'G', 'A'],
+	'F#m' => ['F#m', 'G# dim', 'A', 'Bm', 'C#m', 'D', 'E'],
+	'Dbm' => ['C#m', 'D# dim', 'E', 'F#m', 'G#m', 'A', 'B'],
+	'Abm' => ['G#m', 'A# dimm', 'B', 'C#m', 'D#m', 'E', 'F#'],
+	'Ebm' => ['D#m', 'E# dimm', 'F#', 'G#m', 'A#m', 'B', 'C#'],
+	'Bbm' => ['Bbm', 'C dim', 'Db', 'Ebm', 'Fm', 'Gb', 'Ab'],
+	'Fm' => ['Fm', 'G dim', 'Ab', 'Bbm', 'Cm', 'Db', 'Eb'],
+	'Cm' => ['Cm', 'D dim', 'Eb', 'Fm', 'Gm', 'Ab', 'Bb'],
+	'Gm' => ['Gm', 'A dim', 'Bb', 'Cm', 'Dm', 'Eb', 'F'],
+	'Dm' => ['F', 'Gm', 'Am', 'Bb', 'C', 'Dm'],
 ];
 
 $progressions = [
@@ -54,7 +70,7 @@ function chordPicker($chord_names, $song_data) {
 	$chord_nonsense = [];
 	foreach ($song_chord_index as $chord_id) {
 		$chord_nonsense[] = $chord_names[$song_key][$chord_id];
-		return $chord_nonsense;
+		
 	}
 	
 	return $chord_nonsense;
@@ -76,7 +92,7 @@ function chordProgressionPicker($chord_names, $progressions, $key) {
 $key = pickStuff($song_data, 'keys');
 $tempo = pickStuff($song_data, 'tempos');
 $time = pickStuff($song_data, 'time');
-$chords = chordProgressionPicker($chord_names, $progressions, $key);
+$chords = chordProgressionPicker($major_chord_names, $progressions, $key);
 
 echo "Song Key: " . $key . "\n";
 echo "Song Tempo: " . $tempo . "\n";
