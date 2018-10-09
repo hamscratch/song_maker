@@ -81,8 +81,7 @@ $chords = chordProgressionPicker($chord_names, $progressions, $key);
 echo "Song Key: " . $key . "\n";
 echo "Song Tempo: " . $tempo . "\n";
 echo "Time Signature: " . $time . "\n";
-echo "Chords: " . implode(", ", $chords) . "\n";
-
+echo "Chords: " . implode(" - ", $chords) . "\n";
 
 
 
