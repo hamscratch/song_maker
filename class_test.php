@@ -58,8 +58,52 @@ class MusicMaker {
 	public $chords;
 
 	public function __construct() {
-		$this->blah
+		
+		$this->key = pickStuff('keys');
+		$this->tempo = pickStuff('tempos');
+		$this->time = pickStuff('time');
 
+	}
+
+	public function pickStuff($type) {
+		$index = array_rand(self::SONG_DATA[$type]);
+		$result = self::SONG_DATA[$type][$index];
+	
+		return $result;
+	}
+
+	public function numberPicker() {
+		$size_options = [2, 4];
+		$structure_size = array_rand(array_flip($size_options));
+	
+		return $structure_size;
+	}
+
+	public function chordPicker($chord_names, $song_data) {
+		$song_key = pickStuff($song_data, 'keys');
+		$structure = numberPicker();
+		$song_chord_index = $chord_names[$song_key];
+		$song_chord_index = array_rand($song_chord_index, $structure);
+		$chord_nonsense = [];
+		foreach ($song_chord_index as $chord_id) {
+			$chord_nonsense[] = $chord_names[$song_key][$chord_id];
+			
+		}
+		
+		return $chord_nonsense;
+	}
+
+	public function chordProgressionPicker() {
+		$chord_nonsense = [];
+		
+		$progression_index = array_rand(self::PROGRESSIONS);
+		$chord_progression = self::PROGRESSIONS[$progression_index];
+
+		foreach ($chord_progression as $chord) {
+			$chord_nonsense[] = self::MAJOR_CHORD_NAMES[$key][$chord];
+		}
+		
+		return $chord_nonsense;
 	}
 
 }
