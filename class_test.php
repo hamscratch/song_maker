@@ -110,4 +110,4 @@ class MusicMaker {
 
 $song = new MusicMaker();
 
-echo "Key: " . $song->$key . "\n";
+echo "Key: " . $song->key . "\n";
