@@ -107,11 +107,22 @@ class MusicMaker {
 		return $chord_nonsense;
 	}
 
+	public function run() {
+		echo "Song Key: " . $this->key . "\n";
+		echo "Song Tempo: " . $this->tempo . "\n";
+		echo "Time Signature " . $this->time . "\n";
+		echo "Chords: " . implode(" - ", $this->chords) . "\n";
+	}
+
 }
 
 $song = new MusicMaker();
 
+$song->run();
+
+/*
 echo "Song Key: " . $song->key . "\n";
 echo "Song Tempo: " . $song->tempo . "\n";
 echo "Time Signature " . $song->time . "\n";
 echo "Chords: " . implode(" - ", $song->chords) . "\n";
+*/
