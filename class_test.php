@@ -59,9 +59,9 @@ class MusicMaker {
 
 	public function __construct() {
 		
-		$this->key = pickStuff('keys');
-		$this->tempo = pickStuff('tempos');
-		$this->time = pickStuff('time');
+		$this->key = $this->pickStuff('keys');
+		$this->tempo = $this->pickStuff('tempos');
+		$this->time = $this->pickStuff('time');
 
 	}
 
@@ -107,3 +107,7 @@ class MusicMaker {
 	}
 
 }
+
+$song = new MusicMaker();
+
+echo "Key: " . $this->$key . "\n";
