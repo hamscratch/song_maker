@@ -62,6 +62,7 @@ class MusicMaker {
 		$this->key = $this->pickStuff('keys');
 		$this->tempo = $this->pickStuff('tempos');
 		$this->time = $this->pickStuff('time');
+		$this->chords = $this->chordProgressionPicker();
 
 	}
 
@@ -100,7 +101,7 @@ class MusicMaker {
 		$chord_progression = self::PROGRESSIONS[$progression_index];
 
 		foreach ($chord_progression as $chord) {
-			$chord_nonsense[] = self::MAJOR_CHORD_NAMES[$key][$chord];
+			$chord_nonsense[] = self::MAJOR_CHORD_NAMES[$this->key][$chord];
 		}
 		
 		return $chord_nonsense;
@@ -110,4 +111,7 @@ class MusicMaker {
 
 $song = new MusicMaker();
 
-echo "Key: " . $song->key . "\n";
+echo "Song Key: " . $song->key . "\n";
+echo "Song Tempo: " . $song->tempo . "\n";
+echo "Time Signature " . $song->time . "\n";
+echo "Chords: " . implode(" - ", $song->chords) . "\n";
