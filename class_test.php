@@ -72,7 +72,7 @@ class MusicMaker {
 	
 		return $result;
 	}
-
+/*
 	public function numberPicker() {
 		$size_options = [2, 4];
 		$structure_size = array_rand(array_flip($size_options));
@@ -93,7 +93,7 @@ class MusicMaker {
 		
 		return $chord_nonsense;
 	}
-
+*/
 	public function chordProgressionPicker() {
 		$chord_nonsense = [];
 		
